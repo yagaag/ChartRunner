@@ -11,17 +11,9 @@ public class DrawSquare extends DrawableDecorator implements Drawable {
         super.draw(panel, points);
         Graphics g = panel.getGraphics();
         g.setColor(Color.red);
-        g.fillRect(
-                points.get(points.size()-1).xCoord()-4,
-                points.get(points.size()-1).yCoord()-4,
-                8,
-                8
-        );
-        g.drawRect(
-                points.get(points.size()-1).xCoord()-4,
-                points.get(points.size()-1).yCoord()-4,
-                8,
-                8
-        );
+        for(Point pt: points) {
+            g.fillRect(pt.xCoord()-4, pt.yCoord()-4, 8, 8);
+            g.drawRect(pt.xCoord()-4, pt.yCoord()-4, 8, 8);
+        }
     }
 }

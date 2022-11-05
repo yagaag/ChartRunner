@@ -11,17 +11,9 @@ public class DrawBar extends DrawableDecorator implements Drawable {
         super.draw(panel, points);
         Graphics g = panel.getGraphics();
         g.setColor(Assets.barColor);
-        g.fillRect(
-                points.get(points.size()-1).xCoord()-4,
-                points.get(points.size()-1).yCoord()+4,
-                8,
-                panel.getHeight()-points.get(points.size()-1).yCoord()
-        );
-        g.drawRect(
-                points.get(points.size()-1).xCoord()-4,
-                points.get(points.size()-1).yCoord()+4,
-                8,
-                panel.getHeight()-points.get(points.size()-1).yCoord()
-        );
+        for(Point pt: points) {
+            g.fillRect(pt.xCoord() - 4, pt.yCoord() + 4, 8, panel.getHeight() - pt.yCoord());
+            g.drawRect(pt.xCoord() - 4, pt.yCoord() + 4, 8, panel.getHeight() - pt.yCoord());
+        }
     }
 }

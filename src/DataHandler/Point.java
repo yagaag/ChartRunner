@@ -23,4 +23,8 @@ public class Point {
     public int yCoord() {
         return y;
     }
+
+    public void setXCoord(int xCoordinate) {
+        x = xCoordinate;
+    }
 }

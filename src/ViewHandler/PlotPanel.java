@@ -16,7 +16,7 @@ public class PlotPanel extends JPanel implements Observer {
 
     public PlotPanel(int x, int y) {
         this.setBorder(BorderFactory.createLineBorder(Assets.accentColor, 2));
-        this.setBounds(x,y,380,240);
+        this.setBounds(x,y,380,241);
         this.setBackground(Color.white);
     }
 
@@ -32,12 +32,16 @@ public class PlotPanel extends JPanel implements Observer {
     }
 
     public void simpleDraw() {
+        Graphics g = this.getGraphics();
+        super.paint(g);
         drawMean();
         DrawLine drawLine = new DrawLine();
         drawLine.draw(this, points);
     }
 
     public void mediumDraw() {
+        Graphics g = this.getGraphics();
+        super.paint(g);
         drawMean();
         DrawLine drawLine = new DrawLine();
         DrawSquare drawSquare = new DrawSquare();
@@ -46,6 +50,8 @@ public class PlotPanel extends JPanel implements Observer {
     }
 
     public void complexDraw() {
+        Graphics g = this.getGraphics();
+        super.paint(g);
         drawMean();
         DrawLine drawLine = new DrawLine();
         DrawSquare drawSquare = new DrawSquare();
@@ -57,7 +63,12 @@ public class PlotPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        points.add(((DataGenerator) o).getLastPoint());
+        if((String) arg == "Reposition") {
+            points = ((DataGenerator) o).getPoints();
+        }
+        else {
+            points.add(((DataGenerator) o).getLastPoint());
+        }
         mean = ((DataGenerator) o).getMean();
     }
 }
