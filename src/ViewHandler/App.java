@@ -1,6 +1,8 @@
 package ViewHandler;
 
-import DataHandler.PointGenerator;
+import DataHandler.DataGenerator;
+import DataHandler.PointDataAdapter;
+import DataHandler.PointsGenerator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,13 +15,13 @@ public class App extends JFrame implements ActionListener {
     PlotPanel simpleDrawPanel = new PlotPanel(10,0);
     PlotPanel mediumDrawPanel = new PlotPanel(10,239);
     PlotPanel complexDrawPanel = new PlotPanel(10,478);
-    PointGenerator pointGenerator = new PointGenerator();
+    PointsGenerator pointsGenerator = new PointDataAdapter(new DataGenerator());
 
     public App() {
 
-        pointGenerator.addObserver(simpleDrawPanel);
-        pointGenerator.addObserver(mediumDrawPanel);
-        pointGenerator.addObserver(complexDrawPanel);
+        pointsGenerator.addObserverPanel(simpleDrawPanel);
+        pointsGenerator.addObserverPanel(mediumDrawPanel);
+        pointsGenerator.addObserverPanel(complexDrawPanel);
 
         runButton.setText("Run");
         runButton.addActionListener(this);
@@ -43,14 +45,14 @@ public class App extends JFrame implements ActionListener {
     }
 
     private void runCharting() {
-        pointGenerator.generateNewPoint();
+        pointsGenerator.generateNewPoint();
         simpleDrawPanel.simpleDraw();
         mediumDrawPanel.mediumDraw();
         complexDrawPanel.complexDraw();
     }
 
     private void clearCharts() {
-        pointGenerator.clearPoints();
+        pointsGenerator.clearPoints();
         simpleDrawPanel.clearPanel();
         mediumDrawPanel.clearPanel();
         complexDrawPanel.clearPanel();

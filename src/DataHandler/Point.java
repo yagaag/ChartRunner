@@ -27,4 +27,8 @@ public class Point {
     public void setXCoord(int xCoordinate) {
         x = xCoordinate;
     }
+
+    public void setYCoord(int yCoordinate) {
+        y = yCoordinate;
+    }
 }

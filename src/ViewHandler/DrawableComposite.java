@@ -5,9 +5,7 @@ import DataHandler.Point;
 
 public abstract class DrawableComposite implements Drawable {
     private ArrayList<Drawable> drawableList = new ArrayList<>();
-    public DrawableComposite() {
 
-    }
     public void addDrawable(Drawable drawable) {
         drawableList.add(drawable);
     }

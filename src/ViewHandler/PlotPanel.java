@@ -1,7 +1,8 @@
 package ViewHandler;
 
-import DataHandler.PointGenerator;
 import DataHandler.Point;
+import DataHandler.PointDataAdapter;
+import DataHandler.PointsGenerator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,11 +65,11 @@ public class PlotPanel extends JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if((String) arg == "Add") {
-            points.add(((PointGenerator) o).getLastPoint());
+            points.add(((PointsGenerator) o).getLastPoint());
         }
         else if((String) arg == "Reposition") {
-            points = ((PointGenerator) o).getPoints();
+            points = ((PointsGenerator) o).getPoints();
         }
-        mean = ((PointGenerator) o).getMean();
+        mean = ((PointsGenerator) o).getMean();
     }
 }

@@ -13,7 +13,7 @@ public class MeanEstimator {
         return instance;
     }
 
-    public double updateMean(double mean, Point point, int length) {
-        return ((mean * (length-1)) + point.yCoord()) / length;
+    public double updateMean(double mean, int dataPoint, int length) {
+        return ((mean * (length-1)) + dataPoint) / length;
     }
 }
