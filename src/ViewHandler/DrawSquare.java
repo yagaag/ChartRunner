@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import DataHandler.Point;
 
-public class DrawSquare extends DrawableDecorator implements Drawable {
+public class DrawSquare extends DrawableComposite implements Drawable {
 
     @Override
     public void draw(PlotPanel panel, ArrayList<Point> points) {

@@ -1,6 +1,6 @@
 package ViewHandler;
 
-import DataHandler.DataGenerator;
+import DataHandler.PointGenerator;
 import DataHandler.Point;
 
 import javax.swing.*;
@@ -15,13 +15,13 @@ public class PlotPanel extends JPanel implements Observer {
     double mean = 0.0;
 
     public PlotPanel(int x, int y) {
-        this.setBorder(BorderFactory.createLineBorder(Assets.accentColor, 2));
-        this.setBounds(x,y,380,241);
+        this.setBorder(BorderFactory.createLineBorder(ViewConstants.accentColor, 2));
+        this.setBounds(x,y, ViewConstants.panelWidth, ViewConstants.panelHeight);
         this.setBackground(Color.white);
     }
 
-    public void clear() {
-        this.setBorder(BorderFactory.createLineBorder(Assets.accentColor, 2));
+    public void clearPanel() {
+        this.setBorder(BorderFactory.createLineBorder(ViewConstants.accentColor, 2));
         points.clear();
     }
 
@@ -63,12 +63,12 @@ public class PlotPanel extends JPanel implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if((String) arg == "Reposition") {
-            points = ((DataGenerator) o).getPoints();
+        if((String) arg == "Add") {
+            points.add(((PointGenerator) o).getLastPoint());
         }
-        else {
-            points.add(((DataGenerator) o).getLastPoint());
+        else if((String) arg == "Reposition") {
+            points = ((PointGenerator) o).getPoints();
         }
-        mean = ((DataGenerator) o).getMean();
+        mean = ((PointGenerator) o).getMean();
     }
 }
