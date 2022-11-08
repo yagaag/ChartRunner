@@ -1,13 +1,28 @@
 package ViewHandler;
-
-import java.awt.*;
-import java.util.ArrayList;
 import DataHandler.Point;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+
+/**
+ *
+ *
+ * @author yagaa
+ * @version 1.0
+ * @see DrawableComposite
+ * @see Drawable
+ */
 public class DrawLine implements Drawable {
 
+    /**
+     *
+     *
+     * @param panel
+     * @param points
+     */
     @Override
-    public void draw(PlotPanel panel, ArrayList<Point> points) {
+    public void draw(JPanel panel, ArrayList<Point> points) {
         Graphics g = panel.getGraphics();
         g.setColor(Color.blue);
         for (int i = 0; i < points.size()-1; i++) {

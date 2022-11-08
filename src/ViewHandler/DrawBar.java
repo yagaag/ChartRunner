@@ -1,13 +1,28 @@
 package ViewHandler;
-
-import java.awt.*;
 import DataHandler.Point;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ *
+ *
+ * @author yagaa
+ * @version 1.0
+ * @see DrawableComposite
+ * @see Drawable
+ */
 public class DrawBar extends DrawableComposite implements Drawable {
 
+    /**
+     *
+     *
+     * @param panel
+     * @param points
+     */
     @Override
-    public void draw(PlotPanel panel, ArrayList<Point> points) {
+    public void draw(JPanel panel, ArrayList<Point> points) {
         super.draw(panel, points);
         Graphics g = panel.getGraphics();
         g.setColor(ViewConstants.barColor);

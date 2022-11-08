@@ -1,5 +1,12 @@
 package DataHandler;
 
+/**
+ * Point holds 2-D coordinates
+ *
+ * @author yagaa
+ * @version 1.0
+ * @see PointDataAdapter
+ */
 public class Point {
 
     private int x;
@@ -24,10 +31,18 @@ public class Point {
         return y;
     }
 
+    /**
+     * Setter for x
+     * @param xCoordinate x-coordinate of the point
+     */
     public void setXCoord(int xCoordinate) {
         x = xCoordinate;
     }
 
+    /**
+     * Setter for y
+     * @param yCoordinate y-coordinate of the point
+     */
     public void setYCoord(int yCoordinate) {
         y = yCoordinate;
     }

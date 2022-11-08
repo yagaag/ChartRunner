@@ -2,26 +2,36 @@ package ViewHandler;
 
 import DataHandler.DataGenerator;
 import DataHandler.PointDataAdapter;
-import DataHandler.PointsGenerator;
+import DataHandler.PointFormatData;
+import DataHandler.PointGenerator;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class App generates data points and visualizes them in the form of simple, medium and complex charts
+ *
+ * @author yagaa
+ * @version 1.0
+ */
 public class App extends JFrame implements ActionListener {
 
     JButton runButton = new JButton();
     PlotPanel simpleDrawPanel = new PlotPanel(10,0);
     PlotPanel mediumDrawPanel = new PlotPanel(10,239);
     PlotPanel complexDrawPanel = new PlotPanel(10,478);
-    PointsGenerator pointsGenerator = new PointDataAdapter(new DataGenerator());
+    PointGenerator pointGenerator = new PointGenerator();
 
+    /**
+     * Sets up UI components and displays the JFrame
+     */
     public App() {
 
-        pointsGenerator.addObserverPanel(simpleDrawPanel);
-        pointsGenerator.addObserverPanel(mediumDrawPanel);
-        pointsGenerator.addObserverPanel(complexDrawPanel);
+        pointGenerator.addObserver(simpleDrawPanel);
+        pointGenerator.addObserver(mediumDrawPanel);
+        pointGenerator.addObserver(complexDrawPanel);
 
         runButton.setText("Run");
         runButton.addActionListener(this);
@@ -44,20 +54,31 @@ public class App extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    /**
+     * Generates data and runs the charting process.
+     */
     private void runCharting() {
-        pointsGenerator.generateNewPoint();
+        pointGenerator.generateNewPoint();
         simpleDrawPanel.simpleDraw();
         mediumDrawPanel.mediumDraw();
         complexDrawPanel.complexDraw();
     }
 
+    /**
+     * Clears all charts
+     */
     private void clearCharts() {
-        pointsGenerator.clearPoints();
+        pointGenerator.clearPoints();
         simpleDrawPanel.clearPanel();
         mediumDrawPanel.clearPanel();
         complexDrawPanel.clearPanel();
     }
 
+    /**
+     * Runs/clears the app upon button press
+     *
+     * @param e ActionEvent passed by key press
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == runButton) {
