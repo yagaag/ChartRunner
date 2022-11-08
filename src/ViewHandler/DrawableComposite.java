@@ -17,7 +17,7 @@ public abstract class DrawableComposite implements Drawable {
     private ArrayList<Drawable> drawableList = new ArrayList<>();
 
     /**
-     *
+     * Add Drawables to the DrawableComposite
      *
      * @param drawable
      */
@@ -26,7 +26,7 @@ public abstract class DrawableComposite implements Drawable {
     }
 
     /**
-     *
+     * Remove Drawables from the DrawableComposite
      *
      * @param drawable
      */
@@ -35,10 +35,10 @@ public abstract class DrawableComposite implements Drawable {
     }
 
     /**
+     * Draw all Drawables in the composite
      *
-     *
-     * @param panel
-     * @param points
+     * @param panel The JPanel to be drawn on
+     * @param points The list of Points that need to be drawn
      */
     public void draw(JPanel panel, ArrayList<Point> points) {
         for (Drawable drawable: drawableList) {

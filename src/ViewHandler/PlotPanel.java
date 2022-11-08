@@ -10,10 +10,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- *
+ * Panel that plots generated points with Drawables
  *
  * @author yagaa
- * @version 1.0
+ * @version 1.0c
+ * @see Drawable
  */
 public class PlotPanel extends JPanel implements Observer {
 
@@ -21,10 +22,10 @@ public class PlotPanel extends JPanel implements Observer {
     double mean = 0.0;
 
     /**
+     * Initialize a PlotPanel with start position mentioned
      *
-     *
-     * @param x
-     * @param y
+     * @param x X-coordinate of start position
+     * @param y Y-coordinate of start position
      */
     public PlotPanel(int x, int y) {
         this.setBorder(BorderFactory.createLineBorder(ViewConstants.accentColor, 2));
@@ -33,15 +34,7 @@ public class PlotPanel extends JPanel implements Observer {
     }
 
     /**
-     *
-     */
-    public void clearPanel() {
-        this.setBorder(BorderFactory.createLineBorder(ViewConstants.accentColor, 2));
-        points.clear();
-    }
-
-    /**
-     *
+     * Visualizes the mean of generated points as a line
      */
     private void drawMean() {
         Graphics g = this.getGraphics();
@@ -50,7 +43,7 @@ public class PlotPanel extends JPanel implements Observer {
     }
 
     /**
-     *
+     * Draws a line plot of generated points
      */
     public void simpleDraw() {
         Graphics g = this.getGraphics();
@@ -61,7 +54,7 @@ public class PlotPanel extends JPanel implements Observer {
     }
 
     /**
-     *
+     * Draws a marked line plot of generated points
      */
     public void mediumDraw() {
         Graphics g = this.getGraphics();
@@ -74,7 +67,7 @@ public class PlotPanel extends JPanel implements Observer {
     }
 
     /**
-     *
+     * Draws a marked line plot with bar indicators of generated points
      */
     public void complexDraw() {
         Graphics g = this.getGraphics();
@@ -89,7 +82,15 @@ public class PlotPanel extends JPanel implements Observer {
     }
 
     /**
-     *
+     * Clears the panel
+     */
+    public void clearPanel() {
+        this.setBorder(BorderFactory.createLineBorder(ViewConstants.accentColor, 2));
+        points.clear();
+    }
+
+    /**
+     * Updates the stored points when new points are generated
      *
      * @param o
      * @param arg

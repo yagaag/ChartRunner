@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- *
+ * A Drawable the draws a line plot of Points
  *
  * @author yagaa
  * @version 1.0
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class DrawLine implements Drawable {
 
     /**
+     * Draw a line plot of Points
      *
-     *
-     * @param panel
-     * @param points
+     * @param panel The JPanel to be drawn on
+     * @param points The list of Points that need to be drawn
      */
     @Override
     public void draw(JPanel panel, ArrayList<Point> points) {

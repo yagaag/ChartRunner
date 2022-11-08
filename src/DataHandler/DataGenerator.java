@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- *
+ * Class that generates new data within pre-specified range and stores its mean
  *
  * @author yagaa
  * @version 1.1
@@ -13,8 +13,8 @@ import java.util.Observable;
 public class DataGenerator extends Observable {
 
     ArrayList<Integer> dataArray = new ArrayList<>();
-    static int Ymin = 20;
-    static int Ymax = ViewConstants.panelHeight-20;
+    static int yMin = 20;
+    static int yMax = ViewConstants.panelHeight-20;
     double mean = 0.0;
 
     /**
@@ -22,7 +22,7 @@ public class DataGenerator extends Observable {
      * @return The generated data point
      */
     public int generateDataPoint() {
-        int dataPoint = (int) (Math.random() * ((Ymax - Ymin) + 1) + Ymin);
+        int dataPoint = (int) (Math.random() * ((yMax - yMin) + 1) + yMin);
         dataArray.add(dataPoint);
         mean = MeanEstimator.getInstance().updateMean(mean, dataPoint, dataArray.size());
         return dataPoint;

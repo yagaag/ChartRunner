@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- *
+ * A DrawableComposite that decorates drawings with bar indicators
  *
  * @author yagaa
  * @version 1.0
@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class DrawBar extends DrawableComposite implements Drawable {
 
     /**
+     * Draw in composed elements and then decorate each Point with bar indicators
      *
-     *
-     * @param panel
-     * @param points
+     * @param panel The JPanel to be drawn on
+     * @param points The list of Points that need to be drawn
      */
     @Override
     public void draw(JPanel panel, ArrayList<Point> points) {
