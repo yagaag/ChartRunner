@@ -6,13 +6,13 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 /**
- *
+ * Class that can contain different Drawables and is itself a Drawable
  *
  * @author yagaa
  * @version 1.0
  * @see Drawable
  */
-public abstract class DrawableComposite implements Drawable {
+public class DrawableComposite implements Drawable {
 
     private ArrayList<Drawable> drawableList = new ArrayList<>();
 

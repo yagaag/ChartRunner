@@ -19,9 +19,9 @@ import java.awt.event.ActionListener;
 public class App extends JFrame implements ActionListener {
 
     JButton runButton = new JButton();
-    PlotPanel simpleDrawPanel = new PlotPanel(10,0);
-    PlotPanel mediumDrawPanel = new PlotPanel(10,239);
-    PlotPanel complexDrawPanel = new PlotPanel(10,478);
+    PlotPanel simpleDrawPanel = new PlotPanel(10,0, DrawStyle.SIMPLE);
+    PlotPanel mediumDrawPanel = new PlotPanel(10,239, DrawStyle.MEDIUM);
+    PlotPanel complexDrawPanel = new PlotPanel(10,478, DrawStyle.COMPLEX);
     PointGenerator pointGenerator = new PointGenerator();
 
     /**
@@ -59,9 +59,9 @@ public class App extends JFrame implements ActionListener {
      */
     private void runCharting() {
         pointGenerator.generateNewPoint();
-        simpleDrawPanel.simpleDraw();
-        mediumDrawPanel.mediumDraw();
-        complexDrawPanel.complexDraw();
+        simpleDrawPanel.draw();
+        mediumDrawPanel.draw();
+        complexDrawPanel.draw();
     }
 
     /**

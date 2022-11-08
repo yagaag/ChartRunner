@@ -20,6 +20,7 @@ public class PlotPanel extends JPanel implements Observer {
 
     ArrayList<Point> points = new ArrayList<>();
     double mean = 0.0;
+    DrawableComposite drawableComposite;
 
     /**
      * Initialize a PlotPanel with start position mentioned
@@ -27,10 +28,40 @@ public class PlotPanel extends JPanel implements Observer {
      * @param x X-coordinate of start position
      * @param y Y-coordinate of start position
      */
-    public PlotPanel(int x, int y) {
+    public PlotPanel(int x, int y, DrawStyle style) {
         this.setBorder(BorderFactory.createLineBorder(ViewConstants.accentColor, 2));
         this.setBounds(x,y, ViewConstants.panelWidth, ViewConstants.panelHeight);
         this.setBackground(Color.white);
+        switch (style) {
+            case SIMPLE -> setSimpleComposite();
+            case MEDIUM -> setMediumComposite();
+            case COMPLEX -> setComplexComposite();
+        }
+    }
+
+    /**
+     * Sets a line plot as composite
+     */
+    private void setSimpleComposite() {
+        drawableComposite = new DrawableComposite();
+        drawableComposite.addDrawable(new DrawLine());
+    }
+
+    /**
+     * Set a line plot with square markings as composite
+     */
+    private void setMediumComposite() {
+        drawableComposite = new DrawSquare();
+        drawableComposite.addDrawable(new DrawLine());
+    }
+
+    /**
+     * Set a line plot with square markings and a bar indicator as composite
+     */
+    private void setComplexComposite() {
+        drawableComposite = new DrawBar();
+        drawableComposite.addDrawable(new DrawSquare());
+        drawableComposite.addDrawable(new DrawLine());
     }
 
     /**
@@ -43,42 +74,13 @@ public class PlotPanel extends JPanel implements Observer {
     }
 
     /**
-     * Draws a line plot of generated points
+     * Draws the composite
      */
-    public void simpleDraw() {
+    public void draw() {
         Graphics g = this.getGraphics();
         super.paint(g);
         drawMean();
-        Drawable drawLine = new DrawLine();
-        drawLine.draw(this, points);
-    }
-
-    /**
-     * Draws a marked line plot of generated points
-     */
-    public void mediumDraw() {
-        Graphics g = this.getGraphics();
-        super.paint(g);
-        drawMean();
-        Drawable drawLine = new DrawLine();
-        DrawableComposite drawSquare = new DrawSquare();
-        drawSquare.addDrawable(drawLine);
-        drawSquare.draw(this, points);
-    }
-
-    /**
-     * Draws a marked line plot with bar indicators of generated points
-     */
-    public void complexDraw() {
-        Graphics g = this.getGraphics();
-        super.paint(g);
-        drawMean();
-        Drawable drawLine = new DrawLine();
-        DrawableComposite drawSquare = new DrawSquare();
-        DrawableComposite drawBar = new DrawBar();
-        drawSquare.addDrawable(drawLine);
-        drawBar.addDrawable(drawSquare);
-        drawBar.draw(this, points);
+        drawableComposite.draw(this, points);
     }
 
     /**
